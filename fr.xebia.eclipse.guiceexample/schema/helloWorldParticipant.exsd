@@ -1,0 +1,28 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<schema targetNamespace="fr.xebia.eclipse.guiceexample" xmlns="http://www.w3.org/2001/XMLSchema">
+
+   <element name="extension">
+      <complexType>
+         <choice minOccurs="1" maxOccurs="unbounded">
+            <element ref="client"/>
+         </choice>
+         <attribute name="point" type="string" use="required" />
+         <attribute name="id" type="string" />
+         <attribute name="name" type="string" />
+      </complexType>
+   </element>
+
+   <element name="client">
+      <complexType>
+         <attribute name="class" type="string" use="required">
+            <annotation>
+               <documentation>class must implement fr.xebia.eclipse.guiceexample.extensionpoint.HelloWorldParticipant</documentation>
+               <appInfo>
+                  <meta.attribute kind="java" basedOn=":fr.xebia.eclipse.guiceexample.extensionpoint.HelloWorldParticipant"/>
+               </appInfo>
+            </annotation>
+         </attribute>
+      </complexType>
+   </element>
+   
+</schema>

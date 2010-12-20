@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   
+   <extension point="org.eclipse.ui.startup" />
+   
+   <!-- with Peaberry: -->
+   <!-- <extension point="org.ops4j.peaberry.eclipse.modules">
+      <module class="fr.xebia.eclipse.guiceexample.CoreModule" />
+   </extension> -->
+   
+   <extension point="org.eclipse.ui.actionSets">
+      <actionSet label="Sample Action Set" visible="true" id="fr.xebia.eclipse.guiceexample.actionSet">
+         <menu label="Sample &amp;Menu" id="sampleMenu">
+            <separator name="sampleGroup" />
+         </menu>
+         <!-- with Peaberry: -->
+         <!-- <action
+               label="&amp;Sample Action"
+               icon="icons/sample.gif"
+               class="org.ops4j.peaberry.eclipse.GuiceExtensionFactory"
+               tooltip="Hello, Eclipse world"
+               menubarPath="sampleMenu/sampleGroup"
+               toolbarPath="sampleGroup"
+               id="fr.xebia.eclipse.guiceexample.actions.SampleAction" /> -->
+               
+         <!-- with our factory: -->
+         <action
+               label="&amp;Sample Action"
+               icon="icons/sample.gif"
+               class="fr.xebia.eclipse.guiceexample.GuiceExampleExtensionFactory"
+               tooltip="Hello, Eclipse world"
+               menubarPath="sampleMenu/sampleGroup"
+               toolbarPath="sampleGroup"
+               id="fr.xebia.eclipse.guiceexample.actions.SampleAction" />
+      </actionSet>
+   </extension>
+   
+   <extension-point id="helloWorldParticipant" name="&quot;Hello World&quot; Participant" schema="schema/helloWorldParticipant.exsd"/>
+   
+   <extension point="fr.xebia.eclipse.guiceexample.helloWorldParticipant">
+      <client class="fr.xebia.eclipse.guiceexample.extension.SampleHelloWorldParticipant" />
+   </extension>
+</plugin>
